@@ -87,6 +87,377 @@ Una **auditoría de red** es el proceso sistemático de analizar la infraestruct
 
 ---
 
+## 🛠️ Tecnologías y Herramientas Utilizadas
+
+### Lenguajes de Programación
+
+| Tecnología | Versión | Propósito | Documentación |
+|------------|---------|-----------|---------------|
+| **Python** | 3.9+ | Lenguaje principal del proyecto | [python.org](https://www.python.org/) |
+| **HTML5** | - | Estructura de reportes web | [MDN HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) |
+| **CSS3** | - | Estilos y diseño de reportes | [MDN CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) |
+| **JavaScript** | ES6 | Interactividad en reportes (mínima) | [MDN JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) |
+
+### Librerías Python Core
+
+#### 1. **python-nmap** (v0.7.1+)
+```python
+import nmap
+nm = nmap.PortScanner()
+```
+- **Propósito**: Wrapper de Python para Nmap
+- **Uso en el proyecto**: 
+  - Descubrimiento de hosts activos
+  - Escaneo de puertos
+  - Detección de servicios y versiones
+  - Identificación de sistemas operativos
+- **Alternativas consideradas**: python-libnmap, nmap3
+- **Por qué se eligió**: Más estable, mejor documentada, amplio soporte comunitario
+- **Licencia**: GPL v3
+
+#### 2. **Jinja2** (v3.1.2+)
+```python
+from jinja2 import Template
+template = Template(html_content)
+```
+- **Propósito**: Motor de templates para Python
+- **Uso en el proyecto**:
+  - Generación dinámica de reportes HTML
+  - Renderizado de tablas y gráficos
+  - Personalización de reportes
+- **Características utilizadas**:
+  - Variables y expresiones: `{{ variable }}`
+  - Estructuras de control: `{% for %} {% if %}`
+  - Filtros: `{{ data|length }}`
+  - Herencia de templates
+- **Licencia**: BSD-3-Clause
+
+#### 3. **Matplotlib** (v3.5.0+)
+```python
+import matplotlib.pyplot as plt
+plt.bar(x, y)
+```
+- **Propósito**: Librería de visualización de datos
+- **Uso en el proyecto**:
+  - Gráficos de barras para distribución de riesgos
+  - Gráficos horizontales para tipos de vulnerabilidades
+  - Gráficos de puertos abiertos por host
+  - Charts de servicios más comunes
+- **Tipos de gráficos generados**:
+  - Bar charts (`plt.bar()`)
+  - Horizontal bar charts (`plt.barh()`)
+  - Line plots para umbrales
+- **Backend utilizado**: Agg (sin GUI)
+- **Licencia**: PSF-based
+
+#### 4. **Pandas** (v1.4.0+)
+```python
+import pandas as pd
+df = pd.DataFrame(data)
+```
+- **Propósito**: Análisis y manipulación de datos
+- **Uso en el proyecto**:
+  - Organización de resultados de escaneo
+  - Procesamiento de vulnerabilidades
+  - Generación de estadísticas
+  - Estructuración de datos para reportes
+- **Estructuras utilizadas**:
+  - DataFrames para tablas de hosts
+  - Series para métricas
+- **Licencia**: BSD-3-Clause
+
+#### 5. **ReportLab** (v3.6.0+) - Opcional
+```python
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate
+```
+- **Propósito**: Generación de documentos PDF
+- **Uso en el proyecto**:
+  - Creación de reportes PDF profesionales
+  - Diseño de páginas con tablas y gráficos
+  - Formato corporativo de documentos
+- **Componentes utilizados**:
+  - `SimpleDocTemplate`: Estructura del PDF
+  - `Table` y `TableStyle`: Tablas formateadas
+  - `Paragraph`: Texto con estilos
+  - `Image`: Inclusión de gráficos
+- **Licencia**: BSD-like
+
+### Herramientas Externas
+
+#### **Nmap** (Network Mapper) - v7.80+
+```bash
+nmap -sV -sC -O 192.168.1.0/24
+```
+- **Propósito**: Escáner de red y auditoría de seguridad
+- **Características utilizadas**:
+  - `-sn`: Ping scan (descubrimiento de hosts)
+  - `-sV`: Detección de versiones de servicios
+  - `-sC`: Scripts de enumeración
+  - `-O`: Detección de sistema operativo
+  - `--osscan-guess`: Estimación de OS
+- **Por qué Nmap**:
+  - ✅ Estándar de la industria para auditoría de red
+  - ✅ Base de datos NSE (Nmap Scripting Engine)
+  - ✅ Detección precisa de servicios
+  - ✅ Comunidad activa y actualizaciones constantes
+- **Sitio oficial**: https://nmap.org
+- **Licencia**: Nmap Public Source License
+
+### Librerías Python Estándar (Built-in)
+
+| Librería | Uso en el Proyecto |
+|----------|-------------------|
+| `os` | Gestión de rutas y directorios |
+| `sys` | Argumentos de línea de comandos |
+| `logging` | Sistema de logs y auditoría |
+| `datetime` | Timestamps y fechas en reportes |
+| `argparse` | Parseo de argumentos CLI |
+| `subprocess` | Ejecución de comandos del sistema |
+| `json` | Manejo de datos estructurados |
+| `time` | Medición de tiempos de ejecución |
+| `platform` | Detección del sistema operativo |
+
+### Tecnologías Web para Reportes
+
+#### **HTML5**
+```html
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+</html>
+```
+- **Elementos utilizados**:
+  - Estructura semántica: `<header>`, `<section>`, `<footer>`
+  - Tablas: `<table>`, `<thead>`, `<tbody>`
+  - Listas: `<ul>`, `<ol>`, `<li>`
+  - Imágenes: `<img>` para gráficos
+- **Características modernas**:
+  - Responsive design con viewport
+  - Metadatos para SEO
+
+#### **CSS3**
+```css
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+```
+- **Técnicas utilizadas**:
+  - **Flexbox**: Layout flexible para cards
+  - **Grid Layout**: Diseño de dashboard
+  - **Gradientes**: Backgrounds atractivos
+  - **Transiciones**: Efectos hover suaves
+  - **Box Shadow**: Profundidad visual
+  - **Border Radius**: Esquinas redondeadas
+- **Filosofía de diseño**:
+  - Mobile-first approach
+  - Paleta de colores profesional
+  - Tipografía legible
+
+### Arquitectura y Patrones
+
+#### **Patrón de Diseño: Modular**
+```
+netauditbot.py (Orchestrator)
+    ├── scanner.py (Single Responsibility)
+    ├── security_analyzer.py (Single Responsibility)
+    └── report_generator.py (Single Responsibility)
+```
+- **Principios aplicados**:
+  - **SRP**: Cada módulo tiene una responsabilidad única
+  - **DRY**: No repetir código con `config.py`
+  - **KISS**: Mantener simple y legible
+
+#### **Patrón de Diseño: Pipeline**
+```python
+Entrada → Escaneo → Análisis → Reporte → Salida
+```
+- Flujo secuencial de datos
+- Cada fase procesa resultados de la anterior
+- Manejo de errores en cada etapa
+
+### Control de Versiones
+
+#### **Git**
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+```
+- **Archivo `.gitignore`**: Excluye archivos temporales
+- **Branches recomendadas**:
+  - `main`: Versión estable
+  - `develop`: Desarrollo activo
+  - `feature/*`: Nuevas características
+
+### Entornos Virtuales
+
+#### **venv** (Python Virtual Environment)
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
+```
+- **Propósito**: Aislar dependencias del proyecto
+- **Beneficios**:
+  - Evita conflictos de versiones
+  - Reproduce ambiente exacto
+  - Facilita deployment
+
+### Gestión de Dependencias
+
+#### **pip** + **requirements.txt**
+```txt
+python-nmap>=0.7.1
+jinja2>=3.1.2
+matplotlib>=3.5.0
+pandas>=1.4.0
+reportlab>=3.6.0
+```
+- **Especificación de versiones**:
+  - `>=`: Versión mínima compatible
+  - `==`: Versión exacta (para producción)
+- **Instalación**: `pip install -r requirements.txt`
+
+### Herramientas de Desarrollo
+
+| Herramienta | Propósito | Opcional |
+|-------------|-----------|----------|
+| **VS Code** | Editor de código recomendado | ✅ |
+| **PyCharm** | IDE completo para Python | ✅ |
+| **Git** | Control de versiones | ❌ |
+| **VirtualBox** | Crear entorno de pruebas | ✅ |
+| **Wireshark** | Análisis de tráfico (debugging) | ✅ |
+
+### Sistema de Logs
+
+#### **Python logging**
+```python
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+```
+- **Niveles utilizados**:
+  - `DEBUG`: Información detallada para desarrollo
+  - `INFO`: Eventos generales del flujo
+  - `WARNING`: Situaciones inesperadas no críticas
+  - `ERROR`: Errores que afectan funcionalidad
+  - `CRITICAL`: Errores graves que detienen ejecución
+- **Destinos**:
+  - Consola (stdout)
+  - Archivo en `logs/netauditbot_*.log`
+
+### Formato de Datos
+
+#### **JSON** (JavaScript Object Notation)
+```json
+{
+  "host": "192.168.1.100",
+  "ports": [21, 22, 80],
+  "vulnerabilities": [...]
+}
+```
+- **Uso**: Estructuración interna de datos
+- **Ventajas**: Fácil de leer y parsear
+
+### Compatibilidad
+
+#### **Sistemas Operativos Soportados**
+| OS | Versión | Estado | Notas |
+|----|---------|--------|-------|
+| **Windows** | 10, 11 | ✅ Completo | Requiere Nmap instalado |
+| **Linux** | Ubuntu 20.04+, Debian 10+ | ✅ Completo | Requiere sudo para OS detection |
+| **macOS** | 11.0+ (Big Sur) | ✅ Completo | Instalar Nmap con Homebrew |
+
+#### **Versiones de Python Soportadas**
+```
+✅ Python 3.9
+✅ Python 3.10
+✅ Python 3.11
+✅ Python 3.12
+❌ Python 3.8 (no probado)
+❌ Python 2.x (incompatible)
+```
+
+### Stack Tecnológico Completo
+
+```
+┌─────────────────────────────────────────┐
+│         Capa de Presentación            │
+│  HTML5 + CSS3 + Matplotlib Charts       │
+├─────────────────────────────────────────┤
+│         Capa de Aplicación              │
+│  Python 3.9+ (netauditbot.py)          │
+├─────────────────────────────────────────┤
+│         Capa de Lógica                  │
+│  scanner.py + security_analyzer.py      │
+│  report_generator.py                    │
+├─────────────────────────────────────────┤
+│         Capa de Datos                   │
+│  Pandas DataFrames + JSON               │
+├─────────────────────────────────────────┤
+│         Capa de Red                     │
+│  Nmap (python-nmap wrapper)            │
+├─────────────────────────────────────────┤
+│         Sistema Operativo               │
+│  Windows / Linux / macOS                │
+└─────────────────────────────────────────┘
+```
+
+### Métricas del Proyecto
+
+| Métrica | Valor | Descripción |
+|---------|-------|-------------|
+| **Líneas de código** | ~2,500 | Python, HTML, CSS combinados |
+| **Módulos Python** | 7 | Archivos .py principales |
+| **Dependencias externas** | 5 | Librerías pip |
+| **Tamaño del proyecto** | ~100 KB | Sin incluir venv/ y reports/ |
+| **Tiempo de escaneo** | 1-30 min | Depende del tamaño de red |
+| **Formato de salida** | HTML/PDF | Reportes generados |
+
+### Justificación de Elecciones Tecnológicas
+
+#### ¿Por qué Python?
+- ✅ Sintaxis clara y legible
+- ✅ Amplio ecosistema de librerías
+- ✅ Excelente para scripting y automatización
+- ✅ Comunidad activa en ciberseguridad
+- ✅ Multiplataforma sin modificaciones
+
+#### ¿Por qué Nmap?
+- ✅ Estándar de facto en auditoría de redes
+- ✅ Base de datos de servicios más completa
+- ✅ Scripts NSE para detección avanzada
+- ✅ Activamente mantenido (20+ años)
+- ✅ Usado por profesionales de seguridad
+
+#### ¿Por qué Matplotlib sobre otras librerías?
+- ✅ Gráficos de alta calidad para reportes
+- ✅ Exportación sencilla a PNG
+- ✅ Ampliamente documentado
+- ❌ Alternativas consideradas:
+  - Plotly: Más pesado, requiere JavaScript
+  - Seaborn: Dependencia extra innecesaria
+  - Chart.js: Requiere renderizado en navegador
+
+#### ¿Por qué HTML+CSS sobre frameworks?
+- ✅ Sin dependencias adicionales
+- ✅ Compatible con cualquier navegador
+- ✅ Fácil de personalizar
+- ✅ No requiere servidor web
+- ❌ Frameworks descartados:
+  - Bootstrap: Overhead innecesario
+  - React: Complejidad no justificada
+  - Vue: Similar a React
+
+---
+
 ## 🏗️ Arquitectura del Proyecto
 
 ### Estructura de Archivos
