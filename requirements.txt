@@ -1,0 +1,5 @@
+python-nmap
+jinja2
+matplotlib
+pandas
+reportlab
