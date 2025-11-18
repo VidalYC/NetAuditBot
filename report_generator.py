@@ -191,12 +191,11 @@ class ReportGenerator:
             --border-color: #e2e8f0;
             --accent-green: #38a169;
             --light-gray: #f7fafc;
-            --shadow-inset: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
         }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #black;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
             color: var(--text-primary);
             line-height: 1.6;
             min-height: 100vh;
@@ -205,17 +204,18 @@ class ReportGenerator:
         }
         
         .dashboard-container {
-            max-width: 100%;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 30px;
         }
         
         /* Header con diseño moderno */
         .dashboard-header {
             background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-            border-radius: 0;
-            padding: 60px 40px;
-            margin-bottom: 0;
-            box-shadow: none;
+            border-radius: 16px;
+            padding: 50px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             color: white;
             position: relative;
             overflow: hidden;
@@ -287,20 +287,22 @@ class ReportGenerator:
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin: 30px;
             margin-bottom: 30px;
         }
         
         .kpi-card {
-            background: white;
-            border-radius: 6px;
+            background: rgb(236, 236, 236);
+            border-radius: 16px;
             padding: 30px;
-            box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
-                        0 0  0 2px rgb(190, 190, 190),
-                        0.3em 0.3em 1em rgba(0,0,0,0.3);
-            transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
+        }
+        
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 8px, rgba(0, 0, 0, 0.4) 0px 10px 20px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
         
         .kpi-card::before {
@@ -336,7 +338,7 @@ class ReportGenerator:
         .kpi-icon {
             width: 48px;
             height: 48px;
-            border-radius: 6px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -364,18 +366,19 @@ class ReportGenerator:
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 25px;
-            margin: 30px;
-            margin-bottom: 30px;
         }
         
         .dashboard-card {
-            background: white;
-            border-radius: 6px;
+            background: rgb(236, 236, 236);
+            border-radius: 16px;
             padding: 30px;
-            box-shadow: inset 0 -3em 3em rgba(0,0,0,0.1),
-                        0 0  0 2px rgb(190, 190, 190),
-                        0.3em 0.3em 1em rgba(0,0,0,0.3);
-            transition: border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-2px);
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 8px, rgba(0, 0, 0, 0.4) 0px 10px 20px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
         
         /* Responsive Grid */
@@ -409,17 +412,17 @@ class ReportGenerator:
         
         .card-badge {
             font-size: 0.75em;
-            padding: 4px 12px;
-            border-radius: 6px;
+            padding: 6px 14px;
+            border-radius: 8px;
             font-weight: 600;
-            background: #cbd5e0;
-            color: var(--text-primary);
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
         }
         
         /* Alerts Mejoradas */
         .alert {
             padding: 20px 25px;
-            border-radius: 6px;
+            border-radius: 12px;
             margin-bottom: 25px;
             display: flex;
             align-items: flex-start;
@@ -461,14 +464,14 @@ class ReportGenerator:
         /* Tablas Modernas */
         .table-container {
             overflow-x: auto;
-            border-radius: 6px;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
+            background: rgb(236, 236, 236);
         }
         
         thead {
@@ -498,7 +501,7 @@ class ReportGenerator:
         }
         
         tbody tr:hover {
-            background: #edf2f7;
+            background: #f7fafc;
         }
         
         tbody tr:last-child td {
@@ -508,7 +511,7 @@ class ReportGenerator:
         /* Risk Badges Mejorados */
         .risk-badge {
             padding: 6px 14px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 0.8em;
             display: inline-flex;
@@ -521,19 +524,19 @@ class ReportGenerator:
         .risk-ALTO {
             background: linear-gradient(135deg, #f56565, #e53e3e);
             color: white;
-            box-shadow: rgba(245, 101, 101, 0.4) 0px 4px 12px;
+            box-shadow: 0 4px 12px rgba(245, 101, 101, 0.4);
         }
         
         .risk-MEDIO {
             background: linear-gradient(135deg, #ed8936, #dd6b20);
             color: white;
-            box-shadow: rgba(237, 137, 54, 0.4) 0px 4px 12px;
+            box-shadow: 0 4px 12px rgba(237, 137, 54, 0.4);
         }
         
         .risk-BAJO {
             background: linear-gradient(135deg, var(--accent-green), #2f855a);
             color: white;
-            box-shadow: rgba(56, 161, 105, 0.4) 0px 4px 12px;
+            box-shadow: 0 4px 12px rgba(56, 161, 105, 0.4);
         }
         
         .status-ok {
@@ -550,50 +553,49 @@ class ReportGenerator:
         .chart-container {
             margin: 25px 0;
             text-align: center;
-            background: transparent;
+            background: #f7fafc;
             padding: 25px;
-            border-radius: 6px;
+            border-radius: 12px;
         }
         
         .chart-container img {
             max-width: 100%;
             height: auto;
-            border-radius: 6px;
+            border-radius: 8px;
         }
         
         /* Lista de Recomendaciones con Dropdown */
         .recommendations-dropdown {
             border: 1px solid var(--border-color);
-            background: white;
-            border-radius: 6px;
+            background: rgb(236, 236, 236);
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
         
         .recommendations-header {
             padding: 20px;
-            background: #cbd5e0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             user-select: none;
-            border-bottom: 1px solid var(--border-color);
+            color: white;
         }
         
         .recommendations-header:hover {
-            background: #b8c5d1;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
         }
         
         .recommendations-title {
             font-weight: 600;
             font-size: 1.1em;
-            color: var(--text-primary);
         }
         
         .recommendations-toggle {
             font-size: 1.5em;
             transition: transform 0.3s ease;
-            color: var(--text-secondary);
         }
         
         .recommendations-toggle.active {
@@ -618,8 +620,9 @@ class ReportGenerator:
         .recommendations-list li {
             padding: 15px 20px;
             margin-bottom: 12px;
-            background: #edf2f7;
+            background: #f7fafc;
             border-left: 4px solid var(--accent-green);
+            border-radius: 8px;
             display: flex;
             align-items: flex-start;
             gap: 15px;
@@ -636,11 +639,12 @@ class ReportGenerator:
         /* Footer Mejorado */
         .dashboard-footer {
             background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-            border-radius: 0;
+            border-radius: 16px;
             padding: 30px;
             text-align: center;
             color: #cbd5e1;
-            margin-top: 0;
+            margin-top: 30px;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
         }
         
         .footer-content {
@@ -665,20 +669,6 @@ class ReportGenerator:
             font-size: 0.9em;
         }
         
-        /* Animaciones */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Sin animación en las cards */
-        
         /* Scrollbar personalizado */
         ::-webkit-scrollbar {
             width: 10px;
@@ -686,27 +676,28 @@ class ReportGenerator:
         }
         
         ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 6px;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 6px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: rgba(255, 255, 255, 0.5);
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            body {
-                padding: 0;
+            .dashboard-container {
+                padding: 15px;
             }
             
             .dashboard-header {
-                padding: 25px;
+                padding: 30px 20px;
+                border-radius: 12px;
             }
             
             .header-title h1 {
@@ -723,6 +714,7 @@ class ReportGenerator:
             
             .dashboard-card {
                 padding: 20px;
+                border-radius: 12px;
             }
             
             .footer-content {
@@ -731,15 +723,27 @@ class ReportGenerator:
             }
             
             /* Gráficas en una columna en móvil */
-            .dashboard-card div[style*="grid-template-columns: repeat(2, 1fr)"] {
+            .charts-grid {
                 grid-template-columns: 1fr !important;
             }
+        }
+        
+        /* Grid de gráficas */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
         }
         
         /* Print Styles */
         @media print {
             body {
                 background: white;
+                padding: 0;
+            }
+            
+            .dashboard-container {
+                max-width: 100%;
                 padding: 0;
             }
             
@@ -884,14 +888,14 @@ class ReportGenerator:
                 </p>
             </div>
             
-            <!-- Gráficos de Análisis - Todos en una card -->
+            <!-- Gráficos de Análisis -->
             <div class="dashboard-card col-12">
                 <div class="card-header">
                     <h2 class="card-title">Análisis Gráfico</h2>
                     <span class="card-badge">Visualización de Datos</span>
                 </div>
                 
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px;">
+                <div class="charts-grid">
                     {% if charts_base64['risk_distribution'] %}
                     <div class="chart-container">
                         <h3 style="margin-bottom: 15px; color: var(--text-primary); font-size: 1.1em;">Distribución de Riesgos</h3>
